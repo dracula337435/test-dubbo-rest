@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://code.alibabatech.com/schema/dubbo
+       http://code.alibabatech.com/schema/dubbo/dubbo.xsd
+       ">
+    <!-- 消费方应用名，用于计算依赖关系，不是匹配条件，不要与提供方一样 -->
+    <dubbo:application name="test-dubbo-3-consumer" />
+    <dubbo:protocol name="dubbo" />
+
+    <!-- zookeeper注册中心 -->
+    <dubbo:registry protocol="zookeeper" address="127.0.0.1:2181" />
+
+    <!-- 这里和文档中不同，按文档中的加上generic="true"反而会出错，找不到bean；去掉就能成功了 -->
+    <dubbo:reference interface="org.dracula.test.dubbo.test3.FakeGenericInterface" id="fakeGenericInterface"  />
+
+</beans>

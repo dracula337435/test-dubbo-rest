@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>org.draucla</groupId>
+    <artifactId>test-dubbo-3</artifactId>
+    <version>1.0-SNAPSHOT</version>
+
+    <properties>
+        <!-- 4.12，05-Dec-2014 -->
+        <junit.version>4.12</junit.version>
+        <!-- 1.2.3，01-Apr-2017 -->
+        <logback.version>1.2.3</logback.version>
+        <spring.version>5.0.2.RELEASE</spring.version>
+        <!-- 2.6.2，05-Jun-2018 -->
+        <dubbo.version>2.6.2</dubbo.version>
+        <zk.version>3.4.10</zk.version>
+        <!-- 4.0.1，08-Feb-2018 -->
+        <curator.version>4.0.1</curator.version>
+        <java.version>1.8</java.version>
+        <mvn-compiler-plugin.source>
+            ${java.version}
+        </mvn-compiler-plugin.source>
+        <mvn-compiler-plugin.target>
+            ${mvn-compiler-plugin.source}
+        </mvn-compiler-plugin.target>
+        <global.encoding>UTF-8</global.encoding>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>${junit.version}</version>
+            <!-- 表示开发的时候引入，发布的时候不会加载此包 -->
+            <scope>test</scope>
+        </dependency>
+        <!-- -->
+        <dependency>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-classic</artifactId>
+            <version>${logback.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-core</artifactId>
+            <version>${logback.version}</version>
+        </dependency>
+        <!-- -->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-context-support</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-test</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
+        <!-- -->
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>dubbo</artifactId>
+            <version>${dubbo.version}</version>
+        </dependency>
+        <!-- -->
+        <dependency>
+            <groupId>org.apache.zookeeper</groupId>
+            <artifactId>zookeeper</artifactId>
+            <version>${zk.version}</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>log4j</groupId>
+                    <artifactId>log4j</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <!-- 使用curator -->
+        <dependency>
+            <groupId>org.apache.curator</groupId>
+            <artifactId>curator-framework</artifactId>
+            <version>${curator.version}</version>
+        </dependency>
+        <!-- 使用rest -->
+        <dependency>
+            <groupId>org.jboss.resteasy</groupId>
+            <artifactId>resteasy-jaxrs</artifactId>
+            <version>3.6.1.Final</version>
+        </dependency>
+        <dependency>
+            <groupId>org.jboss.resteasy</groupId>
+            <artifactId>resteasy-client</artifactId>
+            <version>3.6.1.Final</version>
+        </dependency>
+        <dependency>
+            <groupId>org.jboss.resteasy</groupId>
+            <artifactId>resteasy-jackson-provider</artifactId>
+            <version>3.6.1.Final</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.httpcomponents</groupId>
+            <artifactId>httpclient</artifactId>
+            <version>4.5.2</version>
+        </dependency>
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>servlet-api</artifactId>
+            <version>2.5</version>
+        </dependency>
+        <dependency>
+            <groupId>org.mortbay.jetty</groupId>
+            <artifactId>jetty</artifactId>
+            <version>6.1.26</version>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <!-- jdk版本，encoding -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>${mvn-compiler-plugin.source}</source>
+                    <target>${mvn-compiler-plugin.target}</target>
+                    <encoding>${global.encoding}</encoding>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-resources-plugin</artifactId>
+                <configuration>
+                    <!-- spring-boot的parent-pom中改了${}为@，但是“@”不行，改一下。 -->
+                    <!-- 或者useDefaultDelimiters，还是用 -->
+                    <!--<delimiters>-->
+                    <!--<delimiter>@{*}</delimiter>-->
+                    <!--</delimiters>-->
+                    <useDefaultDelimiters>true</useDefaultDelimiters>
+                    <encoding>${global.encoding}</encoding>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://code.alibabatech.com/schema/dubbo
+       http://code.alibabatech.com/schema/dubbo/dubbo.xsd
+       ">
+    <!-- 提供方应用名，用于计算依赖关系，不是匹配条件，不要与提供方一样 -->
+    <dubbo:application name="test-dubbo-3-provider" />
+
+    <!-- zookeeper注册中心 -->
+    <dubbo:registry protocol="zookeeper" address="127.0.0.1:2181" />
+    <dubbo:protocol name="rest" port="8080" />
+    <dubbo:protocol name="dubbo" port="20880" />
+
+    <!-- 一个正常的服务，试验一下多protocol，filter -->
+    <dubbo:service interface="org.dracula.test.dubbo.test3.TestInterface" ref="testInterface"
+        protocol="rest,dubbo" filter="testFilter"/>
+
+    <bean id="testInterface" class="org.dracula.test.dubbo.test3.TestInterfaceImpl" />
+
+    <!-- 试验一下泛化实现 -->
+    <dubbo:service interface="org.dracula.test.dubbo.test3.FakeGenericInterface" ref="testGenericService"
+        protocol="dubbo"/>
+
+    <bean id="testGenericService" class="org.dracula.test.dubbo.test3.TestGenericServiceImpl" />
+
+</beans>
