@@ -12,3 +12,5 @@ Filter做的事为在调用前后，向控制台打印before和after
 test中的```org.dracula.test.dubbo.test3.ConsumerTest```会可看到效果
 1. 泛化调用和实现  
 接口为```org.dracula.test.dubbo.test3.FakeGenericInterface```，提供方实现类为```org.dracula.test.dubbo.test3.TestGenericServiceImpl```
+1. 注解  
+消费方为```org.dracula.test.dubbo.test3.ConsumerAnnotationTest```，对应xml配置中有<dubbo:annotation>
