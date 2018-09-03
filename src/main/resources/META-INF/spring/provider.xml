@@ -18,6 +18,7 @@
     <!-- 一个正常的服务，试验一下多protocol，filter -->
     <dubbo:service interface="org.dracula.test.dubbo.test3.TestInterface" ref="testInterface"
         protocol="rest,dubbo" filter="testFilter"/>
+    <!-- 有了多协议，默认都会上多协议，而rest又要求有@Path注解，注意 -->
 
     <bean id="testInterface" class="org.dracula.test.dubbo.test3.TestInterfaceImpl" />
 
@@ -26,5 +27,8 @@
         protocol="dubbo"/>
 
     <bean id="testGenericService" class="org.dracula.test.dubbo.test3.TestGenericServiceImpl" />
+
+    <!-- 注解，提供方 -->
+    <dubbo:annotation package="org.dracula.test.dubbo.test3.provider" />
 
 </beans>
