@@ -14,6 +14,6 @@
     <!-- zookeeper注册中心 -->
     <dubbo:registry protocol="zookeeper" address="127.0.0.1:2181" />
 
-    <dubbo:reference interface="org.dracula.test.dubbo.test3.TestInterface" id="testInterfaceImpl" />
+    <dubbo:reference interface="org.dracula.test.dubbo.test3.TestInterface" id="testInterfaceImpl" protocol="dubbo"/>
 
 </beans>

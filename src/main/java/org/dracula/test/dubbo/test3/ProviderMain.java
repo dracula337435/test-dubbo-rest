@@ -8,7 +8,7 @@ import com.alibaba.dubbo.container.Main;
 public class ProviderMain {
 
     public static void main(String[] args){
-        System.setProperty("dubbo.spring.config", "/META-INF/spring/main.xml");
+        System.setProperty("dubbo.spring.config", "/META-INF/spring/provider.xml");
         Main.main(args);
     }
 
