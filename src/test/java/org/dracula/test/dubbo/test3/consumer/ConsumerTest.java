@@ -1,5 +1,7 @@
-package org.dracula.test.dubbo.test3;
+package org.dracula.test.dubbo.test3.consumer;
 
+import org.dracula.test.dubbo.test3.SomeParam;
+import org.dracula.test.dubbo.test3.TestInterface;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;

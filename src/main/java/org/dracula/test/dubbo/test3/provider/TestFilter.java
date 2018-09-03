@@ -1,4 +1,4 @@
-package org.dracula.test.dubbo.test3;
+package org.dracula.test.dubbo.test3.provider;
 
 import com.alibaba.dubbo.rpc.*;
 

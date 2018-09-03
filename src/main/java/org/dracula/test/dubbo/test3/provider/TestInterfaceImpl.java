@@ -1,6 +1,8 @@
-package org.dracula.test.dubbo.test3;
+package org.dracula.test.dubbo.test3.provider;
 
 import com.alibaba.dubbo.rpc.protocol.rest.support.ContentType;
+import org.dracula.test.dubbo.test3.SomeParam;
+import org.dracula.test.dubbo.test3.TestInterface;
 
 import javax.ws.rs.*;
 
@@ -8,7 +10,7 @@ import javax.ws.rs.*;
  * @author dk
  */
 @Path("/restService")
-public class TestInterfaceImpl implements TestInterface{
+public class TestInterfaceImpl implements TestInterface {
 
     @GET
     @Path("/sayHello")

@@ -1,1 +1,1 @@
-testFilter=org.dracula.test.dubbo.test3.TestFilter
+testFilter=org.dracula.test.dubbo.test3.provider.TestFilter
