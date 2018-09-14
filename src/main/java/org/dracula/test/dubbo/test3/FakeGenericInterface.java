@@ -7,6 +7,7 @@ public interface FakeGenericInterface {
 
     /**
      *
+     * @param name
      * @return
      */
     String someFunction(String name);
