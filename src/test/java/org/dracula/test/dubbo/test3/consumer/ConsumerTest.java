@@ -17,6 +17,11 @@ public class ConsumerTest {
 
     @Test
     public void test(){
+        System.out.println(testInterface.sayHello("gxk"));
+    }
+
+    @Test
+    public void test3(){
         SomeParam someParam = testInterface.sayHello3();
         System.out.println(someParam.getId());
     }

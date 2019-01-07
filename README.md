@@ -17,3 +17,4 @@ test中的```org.dracula.test.dubbo.test3.consumer.ConsumerTest```会可看到�
 
 ## 一些坑
 1. 多协议，使用多个<dubbo:protocol>，之后的<dubbo:service>默认会使用多个protocol。具体到rest的情形，如果没有@Path，提供方启动会报错
+1. 如果web service系列注解在实现类上，可通过浏览器等方式访问，但是使用接口的消费者不行；将注解移入接口，消费者就可用了
