@@ -17,7 +17,7 @@ public class TestInterfaceImpl implements TestInterface {
     @Consumes(ContentType.APPLICATION_JSON_UTF_8)
     @Produces(ContentType.APPLICATION_JSON_UTF_8)
     @Override
-    public String sayHello(String name) {
+    public String sayHello(@QueryParam("name") String name) {
         return "hello "+name;
     }
 
