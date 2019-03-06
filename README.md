@@ -29,3 +29,26 @@ Content-Type: application/json
 {"id": "gxk"}
 ```
 这里注意加了```Content-Type```，json报文里属性名有引号
+
+试验传递attachments，见```org.dracula.test.dubbo.test3.provider.TestFilter```，在consumer端set，在provider端get
+```
+rpcContext.setAttachment("test-attachment-key", "some-msg");
+```
+dubbo协议下，consumer端没打印出序列化后的内容，provider端打印出attachments这个```Map```为，可见
+```
+[DubboServerHandler-124.126.21.38:20880-thread-4] INFO org.dracula.test.dubbo.test3.provider.TestFilter - {test-attachment-key=some-msg, input=231, interface=org.dracula.test.dubbo.test3.TestInterface}
+```
+rest协议下，consumer端可见使用了报文头```Dubbo-Attachments```
+```
+DEBUG org.apache.http.headers - http-outgoing-0 >> GET /restService/sayHello?name=gxk HTTP/1.1
+DEBUG org.apache.http.headers - http-outgoing-0 >> Accept: application/json;charset=UTF-8
+DEBUG org.apache.http.headers - http-outgoing-0 >> Dubbo-Attachments: test-attachment-key=some-msg
+DEBUG org.apache.http.headers - http-outgoing-0 >> Host: 124.126.21.38:8080
+DEBUG org.apache.http.headers - http-outgoing-0 >> Connection: Keep-Alive
+DEBUG org.apache.http.headers - http-outgoing-0 >> User-Agent: Apache-HttpClient/4.5.2 (Java/11.0.2)
+DEBUG org.apache.http.headers - http-outgoing-0 >> Accept-Encoding: gzip,deflate
+```
+provider打印出attachments这个```Map```为
+```
+{test-attachment-key=some-msg}
+```
