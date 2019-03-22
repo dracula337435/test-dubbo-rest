@@ -52,3 +52,10 @@ provider打印出attachments这个```Map```为
 ```
 {test-attachment-key=some-msg}
 ```
+对比```dubbo```协议和```rest```协议下```zookeeper```中信息的不同，可见```url```最前端协议不同：
+```
+[zk: localhost:2181(CONNECTED) 1] ls /dubbo/io.dracula.test.dubbo.brave.InterfaceB/providers
+[rest%3A%2F%2F172.18.0.1%3A10880%2Fio.dracula.test.dubbo.brave.InterfaceB%3Fanyhost%3Dtrue%26application%3Dtest-dubbo-brave-B%26default.service.filter%3Dtracing%26dubbo%3D2.6.2%26generic%3Dfalse%26interface%3Dio.dracula.test.dubbo.brave.InterfaceB%26methods%3DtoB%26pid%3D3298%26side%3Dprovider%26timestamp%3D1553216539006]
+[zk: localhost:2181(CONNECTED) 2] ls /dubbo/io.dracula.test.dubbo.brave.InterfaceC/providers
+[dubbo%3A%2F%2F172.18.0.1%3A20881%2Fio.dracula.test.dubbo.brave.InterfaceC%3Fanyhost%3Dtrue%26application%3Dtest-dubbo-brave-C%26default.service.filter%3Dtracing%26dubbo%3D2.6.2%26generic%3Dfalse%26interface%3Dio.dracula.test.dubbo.brave.InterfaceC%26methods%3DtoC%26pid%3D3053%26side%3Dprovider%26timestamp%3D1553216511361]
+```
