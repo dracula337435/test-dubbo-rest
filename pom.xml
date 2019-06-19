@@ -7,6 +7,7 @@
     <groupId>org.draucla</groupId>
     <artifactId>test-dubbo-rest</artifactId>
     <version>1.0-SNAPSHOT</version>
+    <packaging>pom</packaging>
 
     <properties>
         <!-- 4.12，05-Dec-2014 -->
@@ -19,15 +20,12 @@
         <zk.version>3.4.10</zk.version>
         <!-- 4.0.1，08-Feb-2018 -->
         <curator.version>4.0.1</curator.version>
-        <java.version>1.8</java.version>
-        <mvn-compiler-plugin.source>
-            ${java.version}
-        </mvn-compiler-plugin.source>
-        <mvn-compiler-plugin.target>
-            ${mvn-compiler-plugin.source}
-        </mvn-compiler-plugin.target>
-        <global.encoding>UTF-8</global.encoding>
     </properties>
+
+    <modules>
+        <module>base</module>
+        <module>test-decouple</module>
+    </modules>
 
     <dependencies>
         <dependency>
@@ -115,33 +113,5 @@
             <version>6.1.26</version>
         </dependency>
     </dependencies>
-
-    <build>
-        <plugins>
-            <!-- jdk版本，encoding -->
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <configuration>
-                    <source>${mvn-compiler-plugin.source}</source>
-                    <target>${mvn-compiler-plugin.target}</target>
-                    <encoding>${global.encoding}</encoding>
-                </configuration>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-resources-plugin</artifactId>
-                <configuration>
-                    <!-- spring-boot的parent-pom中改了${}为@，但是“@”不行，改一下。 -->
-                    <!-- 或者useDefaultDelimiters，还是用 -->
-                    <!--<delimiters>-->
-                    <!--<delimiter>@{*}</delimiter>-->
-                    <!--</delimiters>-->
-                    <useDefaultDelimiters>true</useDefaultDelimiters>
-                    <encoding>${global.encoding}</encoding>
-                </configuration>
-            </plugin>
-        </plugins>
-    </build>
 
 </project>
