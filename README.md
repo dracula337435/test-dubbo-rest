@@ -59,3 +59,7 @@ provider打印出attachments这个```Map```为
 [zk: localhost:2181(CONNECTED) 2] ls /dubbo/io.dracula.test.dubbo.brave.InterfaceC/providers
 [dubbo%3A%2F%2F172.18.0.1%3A20881%2Fio.dracula.test.dubbo.brave.InterfaceC%3Fanyhost%3Dtrue%26application%3Dtest-dubbo-brave-C%26default.service.filter%3Dtracing%26dubbo%3D2.6.2%26generic%3Dfalse%26interface%3Dio.dracula.test.dubbo.brave.InterfaceC%26methods%3DtoC%26pid%3D3053%26side%3Dprovider%26timestamp%3D1553216511361]
 ```
+
+rest方式下可以做到解耦，见```test-decouple```模块  
+注意定义了一个同名的接口```org.dracula.test.dubbo.test3.TestInterface```  
+但是其中方法名，方法参数类型均不同；但是url，参数中的字段名相同。这即可保证调用成功
