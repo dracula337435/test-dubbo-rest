@@ -33,6 +33,7 @@
     <modules>
         <module>base</module>
         <module>test-decouple</module>
+        <module>fix-http-pool-size-conf</module>
     </modules>
 
     <dependencies>
