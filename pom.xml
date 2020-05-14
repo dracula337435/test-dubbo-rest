@@ -17,7 +17,7 @@
         <spring.version>5.0.2.RELEASE</spring.version>
         <!-- 2.6.2，05-Jun-2018 -->
         <dubbo.version>2.6.3</dubbo.version>
-        <zk.version>3.4.10</zk.version>
+        <zk.version>3.4.14</zk.version>
         <!-- 4.0.1，08-Feb-2018 -->
         <curator.version>4.0.1</curator.version>
         <java.version>1.8</java.version>
